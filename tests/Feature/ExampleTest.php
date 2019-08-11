@@ -32,12 +32,20 @@ class ExampleTest extends TestCase
         self::assertTrue(true);
     }
 
-    public function testBasicQueryWithProblems()
+    public function testBasicQueryWithProblemsButPhpStanPass()
     {
         Book::where('id', '>', 1)->firstOrFail()->no_exist_attribute;
         Book::where('id', '>', 1)->firstOrFail()->no_exist_attribute->b;
         Book::where('id', '>', 1)->chapters->firstOrFailX(); // dont dump any error
         // Book::wrongMethod(); work!
+
+        self::assertTrue(true);
+    }
+
+    public function testBasicQueryWithoutProblemsButPhpStanFail()
+    {
+        // Call to an undefined method Illuminate\Database\Query\Builder::firstOrFail()
+        // Book::where('id', '>', 1)->skip(1)->firstOrFail();
 
         self::assertTrue(true);
     }
