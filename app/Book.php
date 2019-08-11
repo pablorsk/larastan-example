@@ -74,6 +74,9 @@ class Book extends Model
 
     /* HasMany */
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function chapters()
     {
         return $this->hasMany(Chapter::class);
