@@ -26,13 +26,13 @@ abstract class TestCase extends BaseTestCase
 
         $options['--realpath'] = true;
 
-        Artisan::call('migrate:status --env=testing');
+        Artisan::call('migrate:status', ['--env'=>'testing']);
         $artisan_output = Artisan::output();
         if (preg_match('/^\| N|^No migrations|^Migration table not found/is', $artisan_output) > 0) {
             fwrite(STDERR, ' ⌚ Migrating and seeding...' . PHP_EOL);
 
-            $this->artisan('migrate --env=testing');
-            $this->artisan('db:seed --env=testing');
+            Artisan::call('migrate');
+            Artisan::call('db:seed', ['--env'=>'testing']);
 
             fwrite(STDERR, ' ✓ Done!' . PHP_EOL);
         } elseif ($artisan_output === '') {
