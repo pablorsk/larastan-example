@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use NunoMaduro\Larastan\LarastanServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(LarastanServiceProvider::class);
+        }
     }
 }

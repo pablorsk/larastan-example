@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Book;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
@@ -17,5 +17,23 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+    }
+
+    public function testBasicQuery()
+    {
+        Book::where('id', '>', 1)->firstOrFail()->id;
+        Book::where('id', '>', 1)->first();
+        Book::where('id', '>', 1)->first();
+        Book::query()->where('id', '>', 1)->first();
+
+        self::assertTrue(true);
+    }
+
+    public function testBasicQueryWithProblems()
+    {
+        Book::where('id', '>', 1)->firstOrFail()->no_exist_attribute;
+        Book::where('id', '>', 1)->firstOrFail()->no_exist_attribute->b;
+
+        self::assertTrue(true);
     }
 }
