@@ -15,27 +15,21 @@ use Illuminate\Support\Facades\Schema;
 /**
  * @SuppressWarnings(PHPMD.ShortMethodName)
  */
-class CreatePasswordResetsTable extends Migration
+class CreateTableBookBook extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create(
-            'password_resets', function (Blueprint $table): void {
-                $table->string('email')->index();
-                $table->string('token');
-                $table->timestamp('created_at')->nullable();
+            'book_book', function (Blueprint $table): void {
+                $table->increments('id');
+                $table->integer('book_id');
+                $table->integer('parent_book_id')->default(0);
             }
         );
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('book_book');
     }
 }
