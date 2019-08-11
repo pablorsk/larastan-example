@@ -3,3 +3,13 @@
 *.scss linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
+package-lock.json -diff
+yarn.lock -diff
+composer.lock -diff
+
+# this library
+/bootstrap export-ignore
+/resources export-ignore
+/test export-ignore
+/bitbucket-pipelines.yml export-ignore
+/runtests export-ignore
