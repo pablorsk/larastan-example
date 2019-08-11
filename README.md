@@ -23,3 +23,19 @@ php artisan code:analyse -l 7 -p "app,tests"
  36/36 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
  [OK] No errors
 ```
+
+### Step 3
+
+```bash
+./vendor/bin/phpstan analyse -c resources/rules/phpstan.src.neon
+ 32/32 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+ [OK] No errors
+```
+
+### Step 4
+
+```bash
+./vendor/bin/phpstan analyse -c resources/rules/phpstan.tests.neon
+ 36/36 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+ [OK] No errors
+```
